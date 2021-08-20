@@ -3,6 +3,9 @@ def arithmetic_arranger(problems, result = False):
     if len(problems) > 5:
         raise "Error: Too many problems."
 
+    for problem in problems:
+        if "x" in problem or "/" in problem:
+            raise "Error: Operator must be '+' or '-'."
 
     return arranged_problems
 
