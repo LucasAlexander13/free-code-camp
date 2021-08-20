@@ -12,6 +12,12 @@ def arithmetic_arranger(problems, result = False):
             if value.isalnum():
                 return "Error: Numbers must only contain digits."
 
+    for problem in problems:
+        for value in problem:
+            if len(value) > 4:
+                return "Error: Numbers cannot be more than four digits."
+
+
     return arranged_problems
 
 
