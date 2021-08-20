@@ -6,6 +6,11 @@ def arithmetic_arranger(problems, result = False):
     for problem in problems:
         if "x" in problem or "/" in problem:
             raise "Error: Operator must be '+' or '-'."
+    
+    for problem in problems:
+        for value in problem:
+            if value.isalnum():
+                raise "Error: Numbers must only contain digits."
 
     return arranged_problems
 
