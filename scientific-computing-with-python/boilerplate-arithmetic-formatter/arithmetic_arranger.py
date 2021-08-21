@@ -12,7 +12,7 @@ def secnd_line(problem):
 
 def third_line(problem):
     max_len = len(max(problem))
-    underlines = "-" (max_len + 2)
+    underlines = "-" * (max_len + 2)
     beetween = " " * 4
     return f"{underlines}{beetween}"
 
@@ -28,6 +28,7 @@ def solve_line(problem):
     beetween = " " * 4
     return f"{spaces}{result}{beetween}"
 
+##############################################################################
 
 def arithmetic_arranger(problems, result=False):
 
@@ -38,17 +39,20 @@ def arithmetic_arranger(problems, result=False):
         if "x" in problem or "/" in problem:
             return "Error: Operator must be '+' or '-'."
     
-        for value in problem:
-            if value.isalnum():
+        terms = problem.split(" ")
+        
+        for char in terms[0] + terms[2]:
+            if char.isalpha():
                 return "Error: Numbers must only contain digits."
-            elif len(value) > 4:
-                return "Error: Numbers cannot be more than four digits."
+        if len(terms[0]) > 4 or len(terms[2]) > 4:
+            return "Error: Numbers cannot be more than four digits."
 
     line1 = ""
     line2 = ""
     line3 = ""
     if result == True:
         line4 = ""
+
     for problem in problems:
         terms = problem.split()
 
@@ -57,8 +61,15 @@ def arithmetic_arranger(problems, result=False):
         line3 += third_line(terms)
         if result == True:
             line4 += solve_line(terms)
+        
+    line1 = line1.rstrip()
+    line2 = line2.rstrip()
+    line3 = line3.rstrip()
+    if result == True:
+        line4 = line4.rstrip()
     
+    arranged_problems = f"{line1}\n{line2}\n{line3}\n"
+    if result == True:
+        arranged_problems += line4
+
     return arranged_problems
-
-
-print(arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"]))
