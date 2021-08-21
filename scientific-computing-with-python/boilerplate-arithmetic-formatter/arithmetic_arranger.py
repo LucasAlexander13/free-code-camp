@@ -4,6 +4,11 @@ def first_line(problem):
     beetween = " " * 4
     return f"{spaces}{problem[0]}{beetween}"
 
+def secnd_line(problem):
+    max_len = len(max(problem))
+    spaces = " " * (max_len - len(problem[2]) + 1)
+    beetween = " " * 4
+    return f"{problem[1]}{spaces}{problem[2]}{beetween}"
 
 def arithmetic_arranger(problems, result = False):
 
@@ -27,6 +32,7 @@ def arithmetic_arranger(problems, result = False):
         terms = problem.split()
 
         line1 += first_line(terms)
+        line2 += secnd_line(terms)
     
     return arranged_problems
 
