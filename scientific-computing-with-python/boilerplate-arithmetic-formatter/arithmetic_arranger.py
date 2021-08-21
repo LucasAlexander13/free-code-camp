@@ -16,6 +16,19 @@ def third_line(problem):
     beetween = " " * 4
     return f"{underlines}{beetween}"
 
+def solve_line(problem):
+    if problem[1] == "+":
+        result = int(problem[0]) + int(problem[2])
+    elif problem[1] == "-":
+        result = int(problem[0]) - int(problem[2])
+    
+    max_len = len(max(problem)) + 2
+    result_len = len(str(result))
+    spaces = " " * (max_len - result_len)
+    beetween = " " * 4
+    return f"{spaces}{result}{beetween}"
+
+
 def arithmetic_arranger(problems, result=False):
 
     if len(problems) > 5:
@@ -43,7 +56,7 @@ def arithmetic_arranger(problems, result=False):
         line2 += secnd_line(terms)
         line3 += third_line(terms)
         if result == True:
-            line4 += fourth_line(terms)
+            line4 += solve_line(terms)
     
     return arranged_problems
 
