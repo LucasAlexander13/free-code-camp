@@ -10,7 +10,13 @@ def secnd_line(problem):
     beetween = " " * 4
     return f"{problem[1]}{spaces}{problem[2]}{beetween}"
 
-def arithmetic_arranger(problems, result = False):
+def third_line(problem):
+    max_len = len(max(problem))
+    underlines = "-" (max_len + 2)
+    beetween = " " * 4
+    return f"{underlines}{beetween}"
+
+def arithmetic_arranger(problems, result=False):
 
     if len(problems) > 5:
         return "Error: Too many problems."
@@ -28,11 +34,16 @@ def arithmetic_arranger(problems, result = False):
     line1 = ""
     line2 = ""
     line3 = ""
+    if result == True:
+        line4 = ""
     for problem in problems:
         terms = problem.split()
 
         line1 += first_line(terms)
         line2 += secnd_line(terms)
+        line3 += third_line(terms)
+        if result == True:
+            line4 += fourth_line(terms)
     
     return arranged_problems
 
