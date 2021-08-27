@@ -31,5 +31,11 @@ def add_time(start, duration, day=None):
             days += 1
             period = "AM"
     
+    pass_days = ""
+    if days == 1:
+        pass_days = "(next day)"
+    elif days > 1:
+        pass_days = f"{days} days later"
+    
 
     return new_time
