@@ -12,5 +12,24 @@ def add_time(start, duration, day=None):
         duration_hrs += 1
     
     new_hrs = start_hrs + duration_hrs
+    days = 0
+
+    if period == "AM":
+        while new_hrs >= 24:
+            new_hrs -= 24
+            days += 1
+        if new_hrs >= 13:
+            new_hrs -= 12
+            period = "PM"
+    
+    elif period == "PM":
+        while new_hrs >= 24:
+            new_hrs -= 24
+            days += 1
+        if new_hrs >= 13:
+            new_hrs -= 12
+            days += 1
+            period = "AM"
+    
 
     return new_time
