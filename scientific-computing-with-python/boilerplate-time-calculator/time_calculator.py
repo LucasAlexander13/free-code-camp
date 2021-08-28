@@ -41,14 +41,16 @@ def add_time(start, duration, actual_day=None):
             days_gone += 1
             period = "AM"
     
-    pass_days = ""
-    if days_gone == 1:
-        pass_days = "(next day)"
-    elif days_gone > 1:
-        pass_days = f"{days_gone} days later"
-    
     if actual_day != None:
         actual_day = actual_day.title()
         new_day = next_day(actual_day, days_gone)
-        return new_time
+        new_time = f"{new_hrs}:{new_min} {period}, {new_day}"
     else:
+        new_time = f"{new_hrs}:{new_min} {period}"
+    
+    if days_gone == 1:
+        new_time += " (next day)"
+    elif days_gone > 1:
+        new_time += f" ({days_gone} days later)"
+
+    return new_time
