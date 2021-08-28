@@ -4,7 +4,7 @@ def next_day(day, days_gone):
 
     position += days_gone
     while position > 6:
-        position - 7
+        position -= 7
     
     return days[position]
 
@@ -24,22 +24,27 @@ def add_time(start, duration, actual_day=None):
     new_hrs = start_hrs + duration_hrs
     days_gone = 0
 
+    new_min = new_min if len(str(new_min)) == 2 else "0" + str(new_min) 
+
     if period == "AM":
         while new_hrs >= 24:
             new_hrs -= 24
             days_gone += 1
-        if new_hrs >= 13:
-            new_hrs -= 12
+        if new_hrs >= 12:
             period = "PM"
+            if new_hrs >= 13:
+                new_hrs -= 12
     
     elif period == "PM":
         while new_hrs >= 24:
             new_hrs -= 24
             days_gone += 1
-        if new_hrs >= 13:
-            new_hrs -= 12
-            days_gone += 1
+        if new_hrs >= 12:
             period = "AM"
+            days_gone += 1
+            if new_hrs >= 13:
+                new_hrs -= 12
+
     
     if actual_day != None:
         actual_day = actual_day.title()
