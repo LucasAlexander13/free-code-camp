@@ -30,8 +30,12 @@ class Rectangle:
 
         for line in range(self.height):
             picture += "*" * self.width + "\n"
-        
         return picture
+    
+    def get_amount_inside(self, other):
+        amount_inside = self.get_area() / other.get_area()
+        return int(amount_inside)
+
 
 
 class Square(Rectangle):
