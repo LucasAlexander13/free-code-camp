@@ -35,6 +35,9 @@ class Rectangle:
     def get_amount_inside(self, other):
         amount_inside = self.get_area() / other.get_area()
         return int(amount_inside)
+    
+    def __str__(self):
+        return f"Rectangle(width={self.width}, height={self.height})"
 
 
 
