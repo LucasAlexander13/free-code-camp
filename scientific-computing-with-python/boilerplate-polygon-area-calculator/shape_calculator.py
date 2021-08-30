@@ -1,6 +1,3 @@
-from _typeshed import Self
-
-
 class Rectangle:
     def __init__(self, width, height):
         self.width = width
@@ -43,9 +40,7 @@ class Rectangle:
 
 class Square(Rectangle):
     def __init__(self, length):
-        super().__init__()
-        self.width = length
-        self.height = length
+        super().__init__(length, length)
 
     def set_side(self, length):
         self.height = length
