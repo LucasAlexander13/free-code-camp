@@ -10,7 +10,11 @@ class Hat():
                 self.contents.append(key)
 
     def draw(self, number):
-        removed_list = []
+        if number > len(self.contents):
+            return self.contents
+        else:
+            removed_list = []
+    
         for i in range(number):
             removed = random.choice(self.contents)
             removed_list.append(removed)
