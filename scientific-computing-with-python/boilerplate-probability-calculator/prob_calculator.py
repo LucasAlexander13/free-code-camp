@@ -43,6 +43,3 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
         
 
     return sucesses / num_experiments
-
-my_hat = Hat(blue=3,red=2,green=6)
-print(experiment(hat=my_hat, expected_balls={"blue":2,"green":1}, num_balls_drawn=4, num_experiments=1000))
