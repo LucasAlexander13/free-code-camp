@@ -1,6 +1,7 @@
 from _typeshed import Self
 class Category:
-    def __init__(self) -> None:
+    def __init__(self, name):
+        self.category = name
         self.ledger = []
 
     def deposit(self, amount, description=""):
