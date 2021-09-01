@@ -1,5 +1,5 @@
 from _typeshed import Self
-class Category():
+class Category:
     def __init__(self) -> None:
         self.ledger = []
 
