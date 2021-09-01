@@ -30,5 +30,10 @@ class Category:
         else:
             return False
     
+    def check_funds(self, amount):
+        if amount > self.amount:
+            return False
+        else:
+            return True
 
 def create_spend_chart(categories):
