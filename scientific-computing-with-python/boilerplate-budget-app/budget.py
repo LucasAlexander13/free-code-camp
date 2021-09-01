@@ -36,4 +36,8 @@ class Category:
         else:
             return True
 
+    def __str__(self):
+        length = (30 - len(self.category)) / 2
+        name = "*" * length + self.category + "*" * length
+
 def create_spend_chart(categories):
