@@ -38,6 +38,11 @@ class Category:
 
     def __str__(self):
         length = (30 - len(self.category)) / 2
-        name = "*" * length + self.category + "*" * length
+        string = "*" * length + self.category + "*" * length + "\n"
+        for dict in self.ledger:
+            for key, value in dict.items():
+                string += str(value) + "\n"
+        string += f"Total: {self.amount}"
+
 
 def create_spend_chart(categories):
