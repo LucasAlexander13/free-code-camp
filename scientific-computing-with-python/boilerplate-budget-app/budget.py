@@ -18,6 +18,9 @@ class Category:
             return True
         else:
             return False
+    
+    def get_balance(self):
+        return self.amount
 
 
 
