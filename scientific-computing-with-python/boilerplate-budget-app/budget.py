@@ -21,8 +21,14 @@ class Category:
     
     def get_balance(self):
         return self.amount
-
-
-
+    
+    def transfer(self, amount, budget):
+        if amount < self.amount:
+            self.withdraw(amount, f"Transfer to {budget.category}")
+            budget.deposit(amount, f"Transfer from {self.category}")
+            return True
+        else:
+            return False
+    
 
 def create_spend_chart(categories):
