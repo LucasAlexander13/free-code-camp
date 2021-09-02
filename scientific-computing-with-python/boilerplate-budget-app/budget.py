@@ -3,17 +3,21 @@ class Category:
         self.category = name
         self.ledger = []
         self.amount = 0
+        self.total = 0
+        self.spent = 0
 
     def deposit(self, amount, description=""):
         text = f"\"amount\": {amount}, \"description\": {description}"
         self.ledger.append("{"+text+"}")
         self.amount += amount
+        self.total += amount
 
     def withdraw(self, amount, description=""):
         if amount < self.amount:
             text = f"\"amount\": -{amount}, \"description\": {description}"
             self.ledger.append("{"+text+"}")
             self.amount -= amount
+            self.spent += amount
             return True
         else:
             return False
@@ -51,4 +55,4 @@ class Category:
 def create_spend_chart(categories):
     string = "Percentage spent by category\n"
     for category in categories:
-        
+
