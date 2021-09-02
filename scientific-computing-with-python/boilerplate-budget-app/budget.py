@@ -78,3 +78,14 @@ def create_spend_chart(categories):
         string += "\n"
 
     string += "    -" + "---" * len(categories) + "\n"
+
+    for i in range(max_length):
+        string += "     "
+        for item in categories:
+            if len(item.category) >= i:
+                name = item.category
+                string += name[i] + "  "
+            else:
+                string += "   "
+        string += "\n"
+
