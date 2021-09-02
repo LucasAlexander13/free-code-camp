@@ -54,5 +54,8 @@ class Category:
 
 def create_spend_chart(categories):
     string = "Percentage spent by category\n"
-    for category in categories:
+    dict_category = {}
+    for item in categories:
+        dict_category[item.category] = int(item.spent / item.total * 10)
+    
 
