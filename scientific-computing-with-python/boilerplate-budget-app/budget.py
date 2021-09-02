@@ -1,4 +1,3 @@
-from _typeshed import Self
 class Category:
     def __init__(self, name):
         self.category = name
@@ -41,8 +40,15 @@ class Category:
         string = "*" * length + self.category + "*" * length + "\n"
         for dict in self.ledger:
             for key, value in dict.items():
-                string += str(value) + "\n"
+                if key == "amount":
+                    temp_string = str(value) + "\n"
+                elif key == "description":
+                    string += str(value) + "\n"
+                    string += temp_string
         string += f"Total: {self.amount}"
 
 
 def create_spend_chart(categories):
+    string = "Percentage spent by category\n"
+    for category in categories:
+        
