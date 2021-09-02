@@ -58,4 +58,18 @@ def create_spend_chart(categories):
     for item in categories:
         dict_category[item.category] = int(item.spent / item.total * 10)
     
+    for i in range(11):
+        table = 100 - i * 10
+        if table == 100:
+            string += f"{table}|  "
+        elif table == 0:
+            string += f"  {table}|  "
+        else:
+            string += f" {table}|  "
 
+        for item in categories:
+            if dict_category[item.category] * 10 == table:
+                string += "o  "
+            else:
+                string += "   "
+        string += "\n"
