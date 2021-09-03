@@ -51,10 +51,12 @@ class Category:
 
 def create_spend_chart(categories):
     string = "Percentage spent by category\n"
-    dict_category = {}
+    
+    spent = {}
     max_length = 0
     for item in categories:
-        dict_category[item.category] = int(item.spent / item.total * 10)
+        spent[item.category] = int(item.spent / item.total * 10)
+
         if len(item.category) > max_length:
             max_length = len(item.category)
     
@@ -68,7 +70,7 @@ def create_spend_chart(categories):
             string += f" {table}| "
 
         for item in categories:
-            if dict_category[item.category] * 10 == table:
+            if spent[item.category] * 10 >= table:
                 string += "o  "
             else:
                 string += "   "
