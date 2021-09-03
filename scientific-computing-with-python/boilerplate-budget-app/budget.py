@@ -13,8 +13,7 @@ class Category:
 
     def withdraw(self, amount, description=""):
         if amount < self.amount:
-            text = f"\"amount\": -{amount}, \"description\": {description}"
-            self.ledger.append("{"+text+"}")
+            self.ledger.append({"amount": -amount, "description": description})
             self.amount -= amount
             self.spent += amount
             return True
