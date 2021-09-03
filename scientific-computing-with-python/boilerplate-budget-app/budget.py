@@ -41,10 +41,10 @@ class Category:
         string = self.category.center(30, "*") + "\n"
         
         for item in self.ledger:
-            description_line = "{}:<23]}".format(item["description"])
-            amount_line = "{:.2f}".format(item["amount"])
+            description_line = "{:<23}".format(item["description"])
+            amount_line = "{:>7.2f}".format(item["amount"])
 
-            string += f"{description_line[:23]}\n{amount_line}\n" 
+            string += f"{description_line[:23]}{amount_line[:7]}\n" 
         string += f"Total: {self.balance:.2f}"
 
         return string
@@ -81,7 +81,7 @@ def create_spend_chart(categories):
     for i in range(max_length):
         string += "     "
         for item in categories:
-            if len(item.category) >= i:
+            if len(item.category) > i:
                 name = item.category
                 string += name[i] + "  "
             else:
@@ -89,22 +89,3 @@ def create_spend_chart(categories):
         string += "\n"
     
     return string[:-2]
-
-
-food = Category("Food")
-food.deposit(1000, "initial deposit")
-food.withdraw(10.15, "groceries")
-food.withdraw(15.89, "restaurant and more food for dessert")
-print(food.get_balance())
-clothing = Category("Clothing")
-food.transfer(50, clothing)
-clothing.withdraw(25.55)
-clothing.withdraw(100)
-auto = Category("Auto")
-auto.deposit(1000, "initial deposit")
-auto.withdraw(15)
-
-print(food)
-print(clothing)
-
-print(create_spend_chart([food, clothing, auto]))
