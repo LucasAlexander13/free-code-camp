@@ -2,29 +2,29 @@ class Category:
     def __init__(self, name):
         self.category = name
         self.ledger = []
-        self.amount = 0
+        self.balance = 0
         self.total = 0
         self.spent = 0
 
     def deposit(self, amount, description=""):
         self.ledger.append({"amount": amount, "description": description})
-        self.amount += amount
+        self.balance += amount
         self.total += amount
 
     def withdraw(self, amount, description=""):
-        if amount < self.amount:
+        if amount < self.balance:
             self.ledger.append({"amount": -amount, "description": description})
-            self.amount -= amount
+            self.balance -= amount
             self.spent += amount
             return True
         else:
             return False
     
     def get_balance(self):
-        return self.amount
+        return self.balance
     
     def transfer(self, amount, budget):
-        if amount < self.amount:
+        if amount < self.balance:
             self.withdraw(amount, f"Transfer to {budget.category}")
             budget.deposit(amount, f"Transfer from {self.category}")
             return True
@@ -32,10 +32,10 @@ class Category:
             return False
     
     def check_funds(self, amount):
-        if amount > self.amount:
-            return False
-        else:
+        if amount <= self.balance:
             return True
+        else:
+            return False
 
     def __str__(self):
         string = self.category.center(30, "*") + "\n"
@@ -45,7 +45,7 @@ class Category:
             amount_line = "{:.2f}".format(item["amount"])
 
             string += f"{description_line[:23]}\n{amount_line}\n" 
-        string += f"Total: {self.amount:.2f}"
+        string += f"Total: {self.balance:.2f}"
 
         return string
 
